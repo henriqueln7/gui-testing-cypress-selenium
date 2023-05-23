@@ -6,7 +6,7 @@ describe('products', () => {
     cy.get('.primary').click();
   });
   // Remove .only and implement others test cases!
-  it.only('details is working', () => {
+  it.only('details is listing all variants', () => {
     // Click in products in side menu
     cy.clickInFirst('a[href="/admin/products/"]');
     // Type in value input to search for specify product
