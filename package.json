@@ -1,0 +1,15 @@
+{
+  "name": "gui-testing-cypress-selenium",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "cypress": "./node_modules/.bin/cypress open",
+    "cy:test-file": "./node_modules/.bin/cypress run -s",
+    "cy:test-suite": "yarn test-file 'cypress/e2e/**/*.cy.js'"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cypress": "^12.12.0"
+  }
+}
