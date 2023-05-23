@@ -4,12 +4,15 @@
   "description": "",
   "scripts": {
     "cypress": "./node_modules/.bin/cypress open",
-    "cy:test-file": "./node_modules/.bin/cypress run -s",
-    "cy:test-suite": "yarn test-file 'cypress/e2e/**/*.cy.js'"
+    "cypress:test-file": "./node_modules/.bin/cypress run -s",
+    "cypress:test-suite": "yarn test-file 'cypress/e2e/**/*.cy.js'",
+    "selenium:test-file": "./node_modules/.bin/mocha --timeout 10000"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "cypress": "^12.12.0"
+    "cypress": "^12.12.0",
+    "mocha": "^10.2.0",
+    "selenium-webdriver": "^4.9.2"
   }
 }
