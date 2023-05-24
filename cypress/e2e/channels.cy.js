@@ -6,7 +6,7 @@ describe('channels', () => {
     cy.get('.primary').click();
   });
   // Remove .only and implement others test cases!
-  it.only('update the country of Fashion Web Store channel', () => {
+  it.only('update the city of Fashion Web Store channel', () => {
     // Click in channels in side menu
     cy.clickInFirst('a[href="/admin/channels/"]');
     // Select only enabled channels channel

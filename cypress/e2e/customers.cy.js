@@ -6,11 +6,11 @@ describe('customers', () => {
     cy.get('.primary').click();
   });
   // Remove .only and implement others test cases!
-  it.only('update Will phone number', () => {
+  it.only('update a customer phone number', () => {
     // Click in customers in side menu
     cy.clickInFirst('a[href="/admin/customers/"]');
     // Type in value input to search for specify customer
-    cy.get('[id="criteria_search_value"]').type('Will');
+    cy.get('[id="criteria_search_value"]').type('@gmail');
     // Click in filter blue button
     cy.get('*[class^="ui blue labeled icon button"]').click();
     // Click in edit of the last customer

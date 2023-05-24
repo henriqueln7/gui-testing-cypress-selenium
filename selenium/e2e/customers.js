@@ -6,7 +6,6 @@ describe('customers', () => {
 
   before(async () => {
     driver = await new Builder().forBrowser('firefox').build();
-    driver.manage().deleteAllCookies();
   });
 
   after(async () => {
@@ -14,6 +13,7 @@ describe('customers', () => {
   });
 
   beforeEach(async () => {
+    driver.manage().deleteAllCookies();
     await driver.get('http://localhost:8080/admin');
     // await driver.get('http://150.165.75.99:8080/admin');
     await driver.findElement(By.id('_username')).sendKeys('sylius');
@@ -23,12 +23,12 @@ describe('customers', () => {
   });
 
   // Remove .only and implement others test cases!
-  it.only('update Will phone number', async () => {
+  it.only('update a customer phone number', async () => {
     // Click in customers in side menu
     await driver.findElement(By.linkText('Customers')).click();
 
     // Type in value input to search for specify customer
-    await driver.findElement(By.id('criteria_search_value')).sendKeys('Will');
+    await driver.findElement(By.id('criteria_search_value')).sendKeys('@gmail');
 
     // Click in filter blue button
     await driver.findElement(By.css('*[class^="ui blue labeled icon button"]')).click();

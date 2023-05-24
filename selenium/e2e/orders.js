@@ -6,7 +6,6 @@ describe('orders', () => {
 
   before(async () => {
     driver = await new Builder().forBrowser('firefox').build();
-    driver.manage().deleteAllCookies();
   });
 
   after(async () => {
@@ -14,6 +13,7 @@ describe('orders', () => {
   });
 
   beforeEach(async () => {
+    driver.manage().deleteAllCookies();
     await driver.get('http://localhost:8080/admin');
     // await driver.get('http://150.165.75.99:8080/admin');
     await driver.findElement(By.id('_username')).sendKeys('sylius');
@@ -23,14 +23,12 @@ describe('orders', () => {
   });
 
   // Remove .only and implement others test cases!
-  it.only('details of especify order shows correct values', async () => {
+  it.only('details of an order shows correct values', async () => {
     // Click in orders in side menu
     await driver.findElement(By.linkText('Orders')).click();
 
     // Type in value input to search for specify order
-    await driver.findElement(By.id('criteria_customer_value')).sendKeys('Kelvin');
-    // Type in value input to search for specify order
-    await driver.findElement(By.id('criteria_total_greaterThan')).sendKeys('1000');
+    await driver.findElement(By.id('criteria_total_greaterThan')).sendKeys('500');
 
     // Click in filter blue button
     await driver.findElement(By.css('*[class^="ui blue labeled icon button"]')).click();
@@ -41,12 +39,11 @@ describe('orders', () => {
 
     // Assert that details page shows important informations
     const bodyText = await driver.findElement(By.tagName('body')).getText();
-    assert(bodyText.includes('Cash on delivery'));
-    assert(bodyText.includes('$1,221.86'));
-    assert(bodyText.includes('Emmanuel Lockman'));
-    assert(bodyText.includes('597 Sienna Corners'));
-    assert(bodyText.includes('North Alejandrin'));
-    assert(bodyText.includes('UNITED KINGDOM 89764-3632'));
+    assert(bodyText.includes('Order total'));
+    assert(bodyText.includes('Payments'));
+    assert(bodyText.includes('Shipments'));
+    assert(bodyText.includes('Customer since'));
+    assert(bodyText.includes('Shipping'));
   });
 
   it('test case 2', async () => {

@@ -6,7 +6,6 @@ describe('product reviews', () => {
 
   before(async () => {
     driver = await new Builder().forBrowser('firefox').build();
-    driver.manage().deleteAllCookies();
   });
 
   after(async () => {
@@ -14,6 +13,7 @@ describe('product reviews', () => {
   });
 
   beforeEach(async () => {
+    driver.manage().deleteAllCookies();
     await driver.get('http://localhost:8080/admin');
     // await driver.get('http://150.165.75.99:8080/admin');
     await driver.findElement(By.id('_username')).sendKeys('sylius');
