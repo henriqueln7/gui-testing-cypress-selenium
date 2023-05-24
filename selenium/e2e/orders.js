@@ -1,7 +1,7 @@
 const { Builder, By, until } = require('selenium-webdriver');
 const assert = require('assert');
 
-describe('association types', () => {
+describe('orders', () => {
   let driver;
 
   before(async () => {
@@ -23,32 +23,30 @@ describe('association types', () => {
   });
 
   // Remove .only and implement others test cases!
-  it.only('edit name of similar products', async () => {
-    // Click in attributes in side menu
-    await driver.findElement(By.linkText('Association types')).click();
+  it.only('details of especify order shows correct values', async () => {
+    // Click in orders in side menu
+    await driver.findElement(By.linkText('Orders')).click();
 
-    // Type in value input to search for specify association type
-    await driver.findElement(By.id('criteria_name_value')).sendKeys('Similar');
+    // Type in value input to search for specify order
+    await driver.findElement(By.id('criteria_customer_value')).sendKeys('Kelvin');
+    // Type in value input to search for specify order
+    await driver.findElement(By.id('criteria_total_greaterThan')).sendKeys('1000');
 
     // Click in filter blue button
     await driver.findElement(By.css('*[class^="ui blue labeled icon button"]')).click();
 
-    // Click in edit of the remain association type
+    // Click in details of the remain order
     const buttons = await driver.findElements(By.css('*[class^="ui labeled icon button "]'));
-    await buttons[1].click();
+    await buttons[0].click();
 
-    // Edit association type name
-    const inputName = await driver.findElement(By.id('sylius_product_association_type_translations_en_US_name'));
-    inputName.click();
-    inputName.clear();
-    inputName.sendKeys('Real similar products');
-
-    // Click on Save changes button
-    await driver.findElement(By.id('sylius_save_changes_button')).click();
-
-    // Assert that association type name has been updated
+    // Assert that details page shows important informations
     const bodyText = await driver.findElement(By.tagName('body')).getText();
-    assert(bodyText.includes('Product association type has been successfully updated.'));
+    assert(bodyText.includes('Cash on delivery'));
+    assert(bodyText.includes('$1,221.86'));
+    assert(bodyText.includes('Emmanuel Lockman'));
+    assert(bodyText.includes('597 Sienna Corners'));
+    assert(bodyText.includes('North Alejandrin'));
+    assert(bodyText.includes('UNITED KINGDOM 89764-3632'));
   });
 
   it('test case 2', async () => {

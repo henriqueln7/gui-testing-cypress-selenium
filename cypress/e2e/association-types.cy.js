@@ -13,7 +13,7 @@ describe('association types', () => {
     cy.get('[id="criteria_name_value"]').type('Similar');
     // Click in filter blue button
     cy.get('*[class^="ui blue labeled icon button"]').click();
-    // Click in details of the remain association type
+    // Click in edit of the remain association type
     cy.get('*[class^="ui labeled icon button "]').last().click();
     // Edit association type name
     cy.get('[id="sylius_product_association_type_translations_en_US_name"]').clear().type('Real similar products');

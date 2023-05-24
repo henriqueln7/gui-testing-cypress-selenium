@@ -13,7 +13,7 @@ describe('attributes', () => {
     cy.get('[id="criteria_code_value"]').type('dress_collection');
     // Click in filter blue button
     cy.get('*[class^="ui blue labeled icon button"]').click();
-    // Click in details of the remain attribute
+    // Click in edit of the remain attribute
     cy.clickInFirst('*[class^="ui labeled icon button "]');
     // Edit attribute position
     cy.get('[id="sylius_product_attribute_position"]').clear().type('10');

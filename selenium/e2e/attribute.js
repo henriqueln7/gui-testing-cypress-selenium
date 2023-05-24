@@ -33,7 +33,7 @@ describe('attributes', () => {
     // Click in filter blue button
     await driver.findElement(By.css('*[class^="ui blue labeled icon button"]')).click();
 
-    // Click in details of the remain attribute
+    // Click in edit of the remain attribute
     const buttons = await driver.findElements(By.css('*[class^="ui labeled icon button "]'));
     await buttons[0].click();
 

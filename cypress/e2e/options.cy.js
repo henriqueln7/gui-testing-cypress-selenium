@@ -13,7 +13,7 @@ describe('options', () => {
     cy.get('[id="criteria_search_value"]').type('jeans_size');
     // Click in filter blue button
     cy.get('*[class^="ui blue labeled icon button"]').click();
-    // Click in details of the remain option
+    // Click in edit of the remain option
     cy.get('*[class^="ui labeled icon button "]').last().click();
     // Edit options values for XL size to GG
     cy.get('[id="sylius_product_option_values_3_translations_pt_PT_value"]').scrollIntoView().clear().type('GG');
