@@ -6,7 +6,7 @@ describe('shipments', () => {
     cy.get('.primary').click();
   });
   // Remove .only and implement others test cases!
-  it.only('complete a new shipment', () => {
+  it.only('ship a ready shipment', () => {
     // Click in shipments in side menu
     cy.clickInFirst('a[href="/admin/shipments/"]');
     // Type in value input to search for specify shipment

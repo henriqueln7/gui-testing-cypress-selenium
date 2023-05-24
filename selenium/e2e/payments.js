@@ -23,7 +23,7 @@ describe('payments', () => {
   });
 
   // Remove .only and implement others test cases!
-  it.only('details is listing all variants', async () => {
+  it.only('complete a new payment', async () => {
     // Click in payments in side menu
     await driver.findElement(By.linkText('Payments')).click();
 

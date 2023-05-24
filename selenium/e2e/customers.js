@@ -1,7 +1,7 @@
 const { Builder, By, until } = require('selenium-webdriver');
 const assert = require('assert');
 
-describe('shipments', () => {
+describe('customers', () => {
   let driver;
 
   before(async () => {
@@ -23,24 +23,32 @@ describe('shipments', () => {
   });
 
   // Remove .only and implement others test cases!
-  it.only('ship a ready shipment', async () => {
-    // Click in shipments in side menu
-    await driver.findElement(By.linkText('Shipments')).click();
+  it.only('update Will phone number', async () => {
+    // Click in customers in side menu
+    await driver.findElement(By.linkText('Customers')).click();
 
-    // Select the state to search for new shipments
-    const dropdown = await driver.findElement(By.id('criteria_state'));
-    await dropdown.findElement(By.xpath("//option[. = 'Ready']")).click();
+    // Type in value input to search for specify customer
+    await driver.findElement(By.id('criteria_search_value')).sendKeys('Will');
 
     // Click in filter blue button
     await driver.findElement(By.css('*[class^="ui blue labeled icon button"]')).click();
 
-    // Click in Ship of the first shipment listed
-    const buttons = await driver.findElements(By.css('*[class^="ui labeled icon teal button"]'));
-    await buttons[0].click();
+    // Click in edit of the last customer
+    const buttons = await driver.findElements(By.css('*[class^="ui labeled icon button "]'));
+    await buttons[buttons.length - 1].click();
 
-    // Assert that shipment has been completed
+    // Edit customer phone number
+    const inputName = await driver.findElement(By.id('sylius_customer_phoneNumber'));
+    inputName.click();
+    inputName.clear();
+    inputName.sendKeys('999.999.9999');
+
+    // Click on Save changes button
+    await driver.findElement(By.id('sylius_save_changes_button')).click();
+
+    // Assert that customer has been updated
     const bodyText = await driver.findElement(By.tagName('body')).getText();
-    assert(bodyText.includes('Shipment has been successfully shipped.'));
+    assert(bodyText.includes('Customer has been successfully updated.'));
   });
 
   it('test case 2', async () => {
