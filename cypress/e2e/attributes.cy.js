@@ -17,7 +17,7 @@ describe('attributes', () => {
     cy.clickInFirst('*[class^="ui labeled icon button "]');
     // Edit attribute position
     cy.get('[id="sylius_product_attribute_position"]').clear().type('10');
-    // Clikc on Save changes button
+    // Click on Save changes button
     cy.get('[id="sylius_save_changes_button"]').scrollIntoView().click();
 
     // Assert that attribute has been updated
