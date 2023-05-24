@@ -1,4 +1,4 @@
-describe('options', () => {
+describe('association types', () => {
   beforeEach(() => {
     cy.visit('/admin');
     cy.get('[id="_username"]').type('sylius');
@@ -6,22 +6,22 @@ describe('options', () => {
     cy.get('.primary').click();
   });
   // Remove .only and implement others test cases!
-  it.only('edit size XL to GG in Portuguese (Portugal)', () => {
-    // Click in options in side menu
-    cy.clickInFirst('a[href="/admin/product-options/"]');
-    // Type in value input to search for specify option
-    cy.get('[id="criteria_search_value"]').type('jeans_size');
+  it.only('edit name of similar products', () => {
+    // Click in association types in side menu
+    cy.clickInFirst('a[href="/admin/product-association-types/"]');
+    // Type in value input to search for specify association type
+    cy.get('[id="criteria_name_value"]').type('Similar');
     // Click in filter blue button
     cy.get('*[class^="ui blue labeled icon button"]').click();
-    // Click in details of the remain option
+    // Click in details of the remain association type
     cy.get('*[class^="ui labeled icon button "]').last().click();
-    // Edit options values for XL size to GG
-    cy.get('[id="sylius_product_option_values_3_translations_pt_PT_value"]').scrollIntoView().clear().type('GG');
+    // Edit association type name
+    cy.get('[id="sylius_product_association_type_translations_en_US_name"]').clear().type('Real similar products');
     // Click on Save changes button
     cy.get('[id="sylius_save_changes_button"]').scrollIntoView().click();
 
-    // Assert that option has been updated
-    cy.get('body').should('contain', 'Product option has been successfully updated.');
+    // Assert that association type name has been updated
+    cy.get('body').should('contain', 'Product association type has been successfully updated.');
   });
   it('test case 2', () => {
     // Implement your test case 2 code here

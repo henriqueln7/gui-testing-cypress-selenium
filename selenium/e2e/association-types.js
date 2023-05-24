@@ -1,7 +1,7 @@
 const { Builder, By, until } = require('selenium-webdriver');
 const assert = require('assert');
 
-describe('options', () => {
+describe('association types', () => {
   let driver;
 
   before(async () => {
@@ -23,32 +23,32 @@ describe('options', () => {
   });
 
   // Remove .only and implement others test cases!
-  it.only('edit size XL to GG in Portuguese (Portugal)', async () => {
-    // Click in options in side menu
-    await driver.findElement(By.linkText('Options')).click();
+  it.only('edit name of similar products', async () => {
+    // Click in attributes in side menu
+    await driver.findElement(By.linkText('Association types')).click();
 
-    // Type in value input to search for specify option
-    await driver.findElement(By.id('criteria_search_value')).sendKeys('jeans_size');
+    // Type in value input to search for specify association type
+    await driver.findElement(By.id('criteria_name_value')).sendKeys('Similar');
 
     // Click in filter blue button
     await driver.findElement(By.css('*[class^="ui blue labeled icon button"]')).click();
 
-    // Click in details of the remain option
+    // Click in details of the remain association type
     const buttons = await driver.findElements(By.css('*[class^="ui labeled icon button "]'));
     await buttons[1].click();
 
-    // Edit options values for XL size to GG
-    const inputName = await driver.findElement(By.id('sylius_product_option_values_3_translations_pt_PT_value'));
+    // Edit association type name
+    const inputName = await driver.findElement(By.id('sylius_product_association_type_translations_en_US_name'));
     inputName.click();
     inputName.clear();
-    inputName.sendKeys('GG');
+    inputName.sendKeys('Real similar products');
 
     // Click on Save changes button
     await driver.findElement(By.id('sylius_save_changes_button')).click();
 
-    // Assert that option has been updated
+    // Assert that association type name has been updated
     const bodyText = await driver.findElement(By.tagName('body')).getText();
-    assert(bodyText.includes('Product option has been successfully updated.'));
+    assert(bodyText.includes('Product association type has been successfully updated.'));
   });
 
   it('test case 2', async () => {
