@@ -10,8 +10,47 @@ Recomended capture-replay extension for Cypress.
 Recomended capture-replay extension for Selenium.
 [Selenium IDE](https://chrome.google.com/webstore/detail/selenium-ide/mooikfkahbdckldjjndioackbalphokd)
 
-It's neccessary have browser firefox installed for execute the selenium scripts.
+It's neccessary to have browser firefox installed for execute the selenium scripts.
 ```
 sudo apt install firefox
 ```
 
+**It's neccessary to have Nodejs and Yarn installed.**
+
+## Execute
+
+First install the dependencies:
+
+```
+yarn install
+```
+
+**For execute the cypress scripts** you can use the cypress interface with:
+
+```
+yarn cypress
+```
+
+You can also run an unique test file in terminal:
+
+```
+yarn cypress:test-file cypress/e2e/products.cy.js
+```
+
+And finally you can execute the suite cypress with:
+
+```
+yarn cypress:test-suite
+```
+
+For execute selenium scripts you use this following commands:
+
+```
+yarn selenium:test-file selenium/e2e/payments.js
+```
+
+And for execute all suite:
+
+```
+yarn selenium:test-suite
+```
