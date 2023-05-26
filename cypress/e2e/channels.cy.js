@@ -9,7 +9,7 @@ describe('channels', () => {
   it.only('update the city of Fashion Web Store channel', () => {
     // Click in channels in side menu
     cy.clickInFirst('a[href="/admin/channels/"]');
-    // Select only enabled channels channel
+    // Select only enabled channels
     cy.get('[id="criteria_enabled"]').select('Yes');
     // Click in filter blue button
     cy.get('*[class^="ui blue labeled icon button"]').click();
