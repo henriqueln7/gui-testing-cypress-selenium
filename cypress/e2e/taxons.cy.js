@@ -15,7 +15,7 @@ describe('taxons', () => {
     cy.get('li:nth-child(3) > .sylius-tree__item > .sylius-tree__action > form > .ui > .menu > .item:nth-child(2)').click();
     // Edit dresses name
     cy.get('[id="sylius_taxon_translations_en_US_name"]').clear().type(' Top');
-    // Clikc on Save changes button
+    // Click on Save changes button
     cy.get('[id="sylius_save_changes_button"]').scrollIntoView().click();
 
     cy.visit('/');
