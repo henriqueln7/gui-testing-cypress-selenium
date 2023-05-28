@@ -1,7 +1,7 @@
 const { Builder, By, until } = require('selenium-webdriver');
 const assert = require('assert');
 
-describe('locales', () => {
+describe('tax rates', () => {
   let driver;
 
   before(async () => {
@@ -23,23 +23,27 @@ describe('locales', () => {
   });
 
   // Remove .only and implement others test cases!
-  it.only('validate filters bar with contains value', async () => {
-    // Click in locales in side menu
-    await driver.findElement(By.linkText('Locales')).click();
+  it.only('validate filter applied through cancel button', async () => {
+    // Click in tax rates in side menu
+    await driver.findElement(By.linkText('Tax rates')).click();
 
-    // Type in value input to search for specify locale
-    await driver.findElement(By.id('criteria_code_value')).sendKeys('en');
+    // Type in value input to search for specify tax rate
+    await driver.findElement(By.id('criteria_search_value')).sendKeys('7');
 
     // Click in filter blue button
     await driver.findElement(By.css('*[class^="ui blue labeled icon button"]')).click();
 
-    // Click in edit of the last locale
+    // Click in edit of the last tax rate
     const buttons = await driver.findElements(By.css('*[class^="ui labeled icon button "]'));
     await buttons[buttons.length - 1].click();
 
-    // Assert that locale is English (United States)
+    // Click on cancel button
+    await driver.findElement(By.css('.admin-layout__content > .ui > .ui > .ui > .ui:nth-child(2)')).click();
+
+    // Assert that we are back to the listing page with the filter applied
     const bodyText = await driver.findElement(By.tagName('body')).getText();
-    assert(bodyText.includes('English (United States)'));
+    assert(bodyText.includes('Clothing Sales Tax 7%'));
+    assert(!bodyText.includes('Sales Tax 20%'));
   });
 
   it('test case 2', async () => {

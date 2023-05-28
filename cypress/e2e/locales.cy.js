@@ -6,7 +6,7 @@ describe('locales', () => {
     cy.get('.primary').click();
   });
   // Remove .only and implement others test cases!
-  it.only('check filters bar with contains value', () => {
+  it.only('validate filters bar with contains value', () => {
     // Click in locales in side menu
     cy.clickInFirst('a[href="/admin/locales/"]');
     // Type in value input to search for specify locale
